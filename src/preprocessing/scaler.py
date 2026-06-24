@@ -1,4 +1,5 @@
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
+import pandas as pd
 
 #possible to add any scaler you want
 def get_scaler(scaler_type):
@@ -17,5 +18,10 @@ def fit_scaler(X_train, scaler_type="min_max"):
 
 
 def apply_scaler(scaler, X):
-    return scaler.transform(X)
+    X_scaled = scaler.transform(X)
+    return pd.DataFrame(
+        X_scaled,
+        columns = X.columns,
+        index = X.index
+    )
     #this was made into a fuction in case other libraries use other methods for transforming
