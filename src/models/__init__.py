@@ -1,0 +1,1 @@
+from .config_handler import get_grid_config
