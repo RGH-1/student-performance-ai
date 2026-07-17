@@ -1,10 +1,8 @@
 from keras.models import Sequential
 from keras.layers import Dense, Dropout
-from keras.optimizers import Adam
-from keras.callbacks import EarlyStopping
 
 
-def create_model(n_inputs, n_outputs, dropout_rate, hidden_layer_neurons = None):
+def create_model(n_inputs, n_outputs, dropout_rate, hidden_layer_neurons = ()):
     model = Sequential()
     if(len(hidden_layer_neurons) > 0):
         model.add(Dense(hidden_layer_neurons[0], activation='relu', input_shape=(n_inputs,)))
