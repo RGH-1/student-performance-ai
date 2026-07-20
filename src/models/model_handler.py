@@ -1,5 +1,6 @@
 import pickle
 from pathlib import Path
+from keras.models import load_model
 
 def get_model_path(model_type):
     PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -30,3 +31,18 @@ def save_ml_model(model, model_name):
 
     with open(file_path, 'wb') as f:
         pickle.dump(model, f)
+
+
+def load_dl_model(model_file_name):
+    file_path = get_model_path('dl') / model_file_name
+
+    model = load_model(file_path)
+
+    return model
+
+def save_dl_model(model, model_name):
+    model_name = model_name + '.keras'
+
+    file_path = get_model_path('dl') / model_name
+
+    model.save(file_path)
